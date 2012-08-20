@@ -1,0 +1,54 @@
+<!doctype html>
+
+<html>
+  <head>
+    <title>#MobileFails - Geolocated dropped calls on #att &amp; #verizon</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    
+    <style>
+      body {
+        text-align: center;
+		  margin:0;
+		  padding:0;
+      }
+
+		#coming_soon {
+			width: 75%;
+			height: 90%;
+			margin: 0 auto;
+		}
+      
+      p {
+        display: block;
+        width: 450px;
+        margin: 2em auto;
+        text-align: left;
+      }
+    </style>
+    
+    <script src="resources/js/raphael.2.1.0.min.js"></script>
+    <script src="resources/js/justgage.1.0.1.min.js"></script>
+    <script>
+      var coming_soon;
+      
+      window.onload = function(){
+        var coming_soon = new JustGage({
+          id: "coming_soon", 
+          value: 5, 
+          min: 0,
+          max: 100,
+			 gaugeWidthScale: .1,
+          title: "Realtime Mobile Fails",
+          label: "We're just getting started...",
+			 startAnimationTime: 2000,
+			 startAnimationType: "bounce"
+        });
+       
+      };
+    </script>
+
+	</head>
+  <body>    
+    <div id="coming_soon"></div>
+  </body>
+</html>
