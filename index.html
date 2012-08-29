@@ -1,0 +1,35 @@
+ <script src="js/jquery.min.js"></script>
+ <script>
+	
+	function getTweets(search) {		
+		var params = 'include_entities=true&result_type=recent&rpp=100&callback=?';
+		return  $.getJSON('http://search.twitter.com/search.json?q='+ search + '&' + params);		
+	}
+		
+   $(function(){
+					
+			var voteRon = getTweets('%23ronpaul');
+			voteRon.success(function (votes) {
+				console.log(votes);
+				$.each(votes.results, function(index, result) { 
+				  $('#ron').append('<p>'+result.text+'</p>');
+				});
+			});
+			
+			var voteMitt = getTweets('%23mittromney');
+			voteMitt.success(function (votes) {
+				console.log(votes);
+				$.each(votes.results, function(index, result) { 
+				  $('#mitt').append('<p>'+result.text+'</p>');
+				});
+			});
+						
+	});
+	
+ </script>
+
+<div id="ron" style="width:45%;float:left;">
+</div>
+
+<div id="mitt" style="width:45%;float:right;">
+</div>
