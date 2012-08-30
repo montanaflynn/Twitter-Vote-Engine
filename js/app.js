@@ -68,12 +68,12 @@ $(function(){
 		
 	ronpaul.on('child_added', function(result) {
 	 	var vote = result.val();
-		$('#'+ronpaul.name()+' .tweets').prepend('<p>'+vote.text+'</p>');
+		$('#'+ronpaul.name()+' .tweets').prepend('<p>'+twttr.txt.autoLink(vote.text)+'</p>');
 	});
 	
 	mittromney.on('child_added', function(result) {
 	 	var vote = result.val();
-		$('#'+mittromney.name()+' .tweets').prepend('<p>'+vote.text+'</p>');
+		$('#'+mittromney.name()+' .tweets').prepend('<p>'+twttr.txt.autoLink(vote.text)+'</p>');
 	});
 
 });
