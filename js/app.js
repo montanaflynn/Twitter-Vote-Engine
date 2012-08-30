@@ -68,7 +68,7 @@ $(function(){
 		
 	ronpaul.on('child_added', function(result) {
 	 	var vote = result.val();
-		var tweet = twttr.txt.autoLink(vote.text, {urlEntities: vote.entities.urls });
+		var tweet = twttr.txt.autoLink('@' + vote.from_user + ' tweets: ' + vote.text, {urlEntities: vote.entities.urls });
 		$('#'+ronpaul.name()+' .tweets').prepend(
 			'<p>'+ tweet +'</p>'
 		);
@@ -76,7 +76,7 @@ $(function(){
 	
 	mittromney.on('child_added', function(result) {
 	 	var vote = result.val();
-		var tweet = twttr.txt.autoLink(vote.text, {urlEntities: vote.entities.urls });
+		var tweet = twttr.txt.autoLink('@' + vote.from_user + ' tweets: ' + vote.text, {urlEntities: vote.entities.urls });
 		$('#'+mittromney.name()+' .tweets').prepend(
 			'<p>'+ tweet +'</p>'
 		);
