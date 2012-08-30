@@ -1,12 +1,13 @@
-/**
- * Twitter Vote Engine
- * By Montana Flynn
- * http://montanaflynn.me
- */
+//////////////////////////////////////////////////////////////////////////////
+// Twitter Vote Engine
+//////////////////////////////////////////////////////////////////////////////
+// By Montana Flynn
+// http://montanaflynn.me
+//////////////////////////////////////////////////////////////////////////////
 
 
 //////////////////////////////////////////////////////////////////////////////
-// Fasten seatbelts and prepare for liftoff, engines are running            
+// Fasten seatbelts and prepare for liftoff, engines are running           
 //////////////////////////////////////////////////////////////////////////////
 $(function(){
 
@@ -68,17 +69,25 @@ $(function(){
 		
 	ronpaul.on('child_added', function(result) {
 	 	var vote = result.val();
-		var tweet = twttr.txt.autoLink('@' + vote.from_user + ' tweets: ' + vote.text, {urlEntities: vote.entities.urls });
-		$('#'+ronpaul.name()+' .tweets').prepend(
-			'<p>'+ tweet +'</p>'
+		console.log(vote);
+		var element = $('#'+ronpaul.name());
+		var tweet = vote.text + ' tweeted @' + vote.from_user  + ' on ' + vote.created_at;		
+		tweet = twttr.txt.autoLink(tweet, {urlEntities: vote.entities.urls })
+		
+		element.find('.tweets').prepend(
+			'<p class="tweet">'+ tweet +'</p>'
 		);
 	});
 	
 	mittromney.on('child_added', function(result) {
 	 	var vote = result.val();
-		var tweet = twttr.txt.autoLink('@' + vote.from_user + ' tweets: ' + vote.text, {urlEntities: vote.entities.urls });
-		$('#'+mittromney.name()+' .tweets').prepend(
-			'<p>'+ tweet +'</p>'
+		console.log(vote);
+		var element = $('#'+mittromney.name());
+		var tweet = vote.text + ' tweeted @' + vote.from_user  + ' on ' + vote.created_at;
+		tweet = twttr.txt.autoLink(tweet, {urlEntities: vote.entities.urls })
+		
+		element.find('.tweets').prepend(
+			'<p class="tweet">'+ tweet +'</p>'
 		);
 	});
 

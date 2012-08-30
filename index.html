@@ -1,27 +1,44 @@
+<!-- Got ya! just kidding mi code su code -->
 <!DOCTYPE html>
 <html lang="en">
 	<head>
 		<title>Twitter Vote Engine</title>
-		<meta author="Montana Flynn">
 		<link href="css/bootstrap.css" rel="stylesheet">
 		<link href="css/bootstrap-responsive.css" rel="stylesheet">
-    
+		<style>
+			#arena .tweets .tweet {
+				padding: 6px 0;
+				margin: 4px 0;
+			}
+			#arena .tweets .tweet a {
+				color:#000;
+				-webkit-transition: color .2s ease-in;
+				-moz-transition: color .2s ease-in;
+				transition: color .2s ease-in;
+			}
+			#arena .tweets .tweet:hover a {
+				color:#08C;
+			}
+		</style>
 	</head>
 	<body>
 		
 	<div class="container">
 		<h1>Twitter Vote Engine</h1>
+		
+		<!-- Anything in the arena will be dealt with -->
 		<div class="row" id="arena">
-					
-			<div id="ronpaul" class="span6">
-				<h3>Ron Paul</h3>
+			
+			<!-- Using data-search and data-active to start the show -->
+			<div id="ronpaul" data-search="%23ronpaul" data-active="true" class="span6">
+				<h3 class="title">Ron Paul <span>#ronpaul</span> <span class="badge"></span></h3>
 				<div class="init-loading progress progress-striped active">
 				  <div class="bar" style="width: 100%;"></div>
 				</div>
 				<div class="tweets"></div>
 			</div>
 			<div id="mittromney" class="span6">
-				<h3>Mitt Romney</h3>
+				<h3 class="title">Mitt Romney <span>#mittromney</span> <span class="badge"></span></h3>
 				<div class="init-loading progress progress-striped active">
 				  <div class="bar" style="width: 100%;"></div>
 				</div>
