@@ -1,29 +1,50 @@
- <script src="jquery.min.js"></script>
- <script>
-	
-	function getTweets(search) {		
-		var params = 'include_entities=true&result_type=recent&rpp=100&callback=?';
-		return  $.getJSON('http://search.twitter.com/search.json?q='+ search + '&' + params);		
-	}
+<script src="js/jquery.min.js"></script>
+<script type='text/javascript' src='//static.firebase.com/demo/firebase.js'></script>
+<script>
 		
    $(function(){
-					
-			var voteRon = getTweets('%23ronpaul');
-			voteRon.success(function (votes) {
-				console.log(votes);
-				$.each(votes.results, function(index, result) { 
-				  $('#ron').append('<p>'+result.text+'</p>');
+	
+		var db   = new Firebase('http://demo.firebase.com/goptweets');
+		var ronTweets  = db.child('ronpaul');
+		var mittTweets = db.child('mittromney');
+
+		function getTweets(search, limit, db){
+			setTimeout(function(){
+				$.ajax({ 
+					url: 'http://search.twitter.com/search.json?q='+ search + '&include_entities=true&result_type=recent&rpp='+limit+'&callback=?', 
+					dataType: "json", 
+					success: function(response){
+						$.each(response.results, function(index, result) { 
+							console.log(result.id);
+							db.push(result);
+						});
+			    	}, 
+					complete: getTweets(search, limit, db)
 				});
-			});
+				}, 10000);
+		}
+		
+		// Pop this bitch off
+		var search = '%23ronpaul';
+		var limit = 1;
+		getTweets(search, limit, ronTweets);
+		
+		var search = '%23mittromney';
+		var limit = 1;
+		getTweets(search, limit, mittTweets);
+
 			
-			var voteMitt = getTweets('%23mittromney');
-			voteMitt.success(function (votes) {
-				console.log(votes);
-				$.each(votes.results, function(index, result) { 
-				  $('#mitt').append('<p>'+result.text+'</p>');
-				});
-			});
-						
+		ronTweets.on('child_added', function(result) {
+		 	var vote = result.val();
+			$('#ron').prepend('<p>'+vote.text+'</p>');
+		});
+		
+		
+		mittTweets.on('child_added', function(result) {
+		 	var vote = result.val();
+			$('#mitt').prepend('<p>'+vote.text+'</p>');
+		});
+
 	});
 	
  </script>
