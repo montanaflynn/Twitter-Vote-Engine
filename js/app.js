@@ -1,22 +1,18 @@
-//////////////////////////////////////////////////////////////////////////////
-// Twitter Vote Engine
-//////////////////////////////////////////////////////////////////////////////
-// By Montana Flynn
-// http://montanaflynn.me
-//////////////////////////////////////////////////////////////////////////////
+/** 
+ * Twitter Vote Engine 
+ * By Montana Flynn
+ * http://montanaflynn.me
+ */
 
-
-//////////////////////////////////////////////////////////////////////////////
 // Fasten seatbelts and prepare for liftoff, engines are running           
-//////////////////////////////////////////////////////////////////////////////
 $(function(){
 
 	//////////////////////////////////////////////////////////////////////////////
-	// Basically, display and count all tweets while collecting new ones       
+	// Set up datastores and start collecting tweets
 	//////////////////////////////////////////////////////////////////////////////
 
 	// Using persistant json storage Firebase
-	var db   = new Firebase('http://demo.firebase.com/goptweets');
+	var db   = new Firebase('http://gamma.firebase.com/twitter-vote-engine/');
 	var ronpaul  = db.child('ronpaul');
 	var mittromney = db.child('mittromney');
 	
@@ -32,7 +28,8 @@ $(function(){
 		setTimeout(function(){
 			var ref = db.name();
 			$.ajax({ 
-				url: 'http://search.twitter.com/search.json?q='+ search + '&include_entities=true&result_type=recent&rpp='+limit+'&callback=?', 
+				url: 'http://search.twitter.com/search.json?q='+ search + 
+				'&include_entities=true&result_type=recent&rpp='+limit+'&callback=?', 
 				dataType: "json", 
 				success: function(response){
 					$.each(response.results, function(index, result) { 
@@ -45,7 +42,7 @@ $(function(){
 		    	}, 
 				complete: getTweets(search, limit, db)
 			});
-		}, 30000);
+		}, 10000);
 	}
 	
 	//////////////////////////////////////////////////////////////////////////////
@@ -54,12 +51,12 @@ $(function(){
 	
 	// Ron Paul
 	var search = '%23ronpaul';
-	var limit = 1;
+	var limit = 25;
 	getTweets(search, limit, ronpaul);
 	
 	// Vs. Mitt Romney
 	var search = '%23mittromney';
-	var limit = 1;
+	var limit = 25;
 	getTweets(search, limit, mittromney);
 
 		
