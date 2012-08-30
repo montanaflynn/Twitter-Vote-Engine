@@ -10,7 +10,7 @@
 		//////////////////////////////////////////////////////////////////////////////
 		// Basically, display and count all tweets while collecting new ones       
 		//////////////////////////////////////////////////////////////////////////////
-		
+
 		// Using persistant json storage Firebase
 		var db   = new Firebase('http://demo.firebase.com/goptweets');
 		var ronpaul  = db.child('ronpaul');
@@ -31,24 +31,16 @@
 					dataType: "json", 
 					success: function(response){
 						$.each(response.results, function(index, result) { 
-							var currentTweets = feed[ref];
-										
-							$.each(currentTweets, function(index, key){
-								console.log(result.id);
-								
-								if (key['id'] === result.id) {
-									console.log('no cookie for you');
-								} else {
-									db.push(result);
-									console.log('ok you win');
+							db.child(result.id_str).transaction(function(currentTweetData) {
+								if (currentTweetData === null) {
+									return result;
 								}
 							});
-													
 						});
 			    	}, 
 					complete: getTweets(search, limit, db)
 				});
-				}, 5000);
+			}, 30000);
 		}
 		
 		//////////////////////////////////////////////////////////////////////////////
