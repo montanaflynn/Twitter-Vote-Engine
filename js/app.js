@@ -23,6 +23,7 @@ $(function(){
 	var feed;
 	db.on('value', function(result) {
 		feed = result.val();
+		$('.init-loading').hide();
 	});
 	
 	// Update data every 30 seconds
