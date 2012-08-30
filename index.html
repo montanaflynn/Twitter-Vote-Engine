@@ -1,80 +1,30 @@
-<script src='js/jquery.min.js'></script>
-<script src='//static.firebase.com/demo/firebase.js'></script>
-<script type="text/javascript">
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>Twitter Vote Engine</title>
+		<meta author="Montana Flynn">
+		<link href="css/bootstrap.css" rel="stylesheet">
+		<link href="css/bootstrap-responsive.css" rel="stylesheet">
+    
+	</head>
+	<body>
 		
-	//////////////////////////////////////////////////////////////////////////////
-	// Fasten seatbelts and prepare for liftoff, engines are running            
-	//////////////////////////////////////////////////////////////////////////////
-   $(function(){
+	<div class="container">
+		<h1>Twitter Vote Engine</h1>
+		<div class="row" id="arena">
+			<div id="ronpaul" class="span6">
+				<h3>Ron Paul</h3>
+				<div class="tweets"></div>
+			</div>
+			<div id="mittromney" class="span6">
+				<h3>Mitt Romney</h3>
+				<div class="tweets"></div>
+			</div>
+		</div>
+	</div>
 	
-		//////////////////////////////////////////////////////////////////////////////
-		// Basically, display and count all tweets while collecting new ones       
-		//////////////////////////////////////////////////////////////////////////////
-
-		// Using persistant json storage Firebase
-		var db   = new Firebase('http://demo.firebase.com/goptweets');
-		var ronpaul  = db.child('ronpaul');
-		var mittromney = db.child('mittromney');
-		
-		// Set the feed up forever with a callback
-		var feed;
-		db.on('value', function(result) {
-			feed = result.val();
-		});
-		
-		// Update data every 30 seconds
-		function getTweets(search, limit, db){
-			setTimeout(function(){
-				var ref = db.name();
-				$.ajax({ 
-					url: 'http://search.twitter.com/search.json?q='+ search + '&include_entities=true&result_type=recent&rpp='+limit+'&callback=?', 
-					dataType: "json", 
-					success: function(response){
-						$.each(response.results, function(index, result) { 
-							db.child(result.id_str).transaction(function(currentTweetData) {
-								if (currentTweetData === null) {
-									return result;
-								}
-							});
-						});
-			    	}, 
-					complete: getTweets(search, limit, db)
-				});
-			}, 30000);
-		}
-		
-		//////////////////////////////////////////////////////////////////////////////
-		// Here you set up your queries against twitter and fire away              
-		//////////////////////////////////////////////////////////////////////////////
-		
-		// Ron Paul
-		var search = '%23ronpaul';
-		var limit = 1;
-		getTweets(search, limit, ronpaul);
-		
-		// Vs. Mitt Romney
-		var search = '%23mittromney';
-		var limit = 1;
-		getTweets(search, limit, mittromney);
-
-			
-		//////////////////////////////////////////////////////////////////////////////
-		// Set up GUI and callbacks to keep it fresh                                              
-		//////////////////////////////////////////////////////////////////////////////
-		
-		$('body').append('<div id="ron" style="width:45%;float:left;"></div>');
-		$('body').append('<div id="mitt" style="width:45%;float:right;"></div>');
-			
-		ronpaul.on('child_added', function(result) {
-		 	var vote = result.val();
-			$('#ron').prepend('<p>'+vote.text+'</p>');
-		});
-		
-		mittromney.on('child_added', function(result) {
-		 	var vote = result.val();
-			$('#mitt').prepend('<p>'+vote.text+'</p>');
-		});
-
-	});
-	
- </script>
+	<script src='js/jquery.min.js'></script>
+	<script src='js/app.js'></script>
+	<script src='//static.firebase.com/demo/firebase.js'></script>
+	</body>
+</html>
