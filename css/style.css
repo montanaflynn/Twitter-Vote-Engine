@@ -31,7 +31,7 @@
 }
 
 
-#arena .poll > header button {
+#arena .poll > header .btn {
 	float: right;
 	position: relative;
 	bottom: 50px;

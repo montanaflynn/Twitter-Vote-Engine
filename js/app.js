@@ -22,7 +22,7 @@ $(function(){
 	var feed;
 	
 	// Add Vote Count Badge (Because it's ugly)
-	$('.poll header button').append('&nbsp;<span class="badge badge-inverse"></span>');
+	$('.poll header .btn').append('&nbsp;<span class="badge badge-inverse"></span>');
 	
 	db_scope.on('value', function(result) {
 		$('.loading').hide();
