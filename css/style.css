@@ -1,0 +1,89 @@
+#arena .tweets .tweet {
+	padding: 6px 0;
+	margin: 4px 0;
+
+	-webkit-animation: fadeOut 2s;
+	-moz-animation: fadeOut 2s;
+	-ms-animation: fadeOut 2s;
+	-o-animation: fadeOut 2s;
+	animation: fadeOut 2s;
+}
+
+#arena .tweets .tweet a {
+	color: #000;
+
+	-webkit-transition: color .2s ease-in;
+	-moz-transition: color .2s ease-in;
+	-o-transition: color .2s ease-in;
+	-ms-transition: color .2s ease-in;
+	transition: color .2s ease-in;
+}
+
+#arena .tweets .tweet:hover a {
+	color: #08C;
+}
+
+@keyframes "fadeOut" {
+ 0% {
+    background: #f;
+ }
+ 50% {
+    background: #bff6fb;
+ }
+ 100% {
+    background: #FFF;
+ }
+
+}
+
+@-moz-keyframes fadeOut {
+ 0% {
+   background: #f;
+ }
+ 50% {
+   background: #bff6fb;
+ }
+ 100% {
+   background: #FFF;
+ }
+
+}
+
+@-webkit-keyframes "fadeOut" {
+ 0% {
+   background: #f;
+ }
+ 50% {
+   background: #bff6fb;
+ }
+ 100% {
+   background: #FFF;
+ }
+
+}
+
+@-ms-keyframes "fadeOut" {
+ 0% {
+   background: #f;
+ }
+ 50% {
+   background: #bff6fb;
+ }
+ 100% {
+   background: #FFF;
+ }
+
+}
+
+@-o-keyframes "fadeOut" {
+ 0% {
+   background: #f;
+ }
+ 50% {
+   background: #bff6fb;
+ }
+ 100% {
+   background: #FFF;
+ }
+
+}
