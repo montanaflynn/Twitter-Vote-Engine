@@ -31,10 +31,10 @@
 }
 
 
-#arena .poll > header .badge {
+#arena .poll > header button {
 	float: right;
 	position: relative;
-	bottom: 40px;
+	bottom: 50px;
 }
 
 #arena .poll .loading {
@@ -46,6 +46,7 @@
 }
 
 #arena .poll section .tweet {
+	margin:0;
 	background: #eee;
 	border-top:#ddd 1px solid;
 	border-bottom:#fff 1px solid;
