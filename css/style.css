@@ -1,7 +1,54 @@
-#arena .tweets .tweet {
-	padding: 6px 0;
-	margin: 4px 0;
+.container > header {
+	margin: 40px 0;
+}
+#arena {
+}
 
+#arena .poll > header, 
+#arena .poll .loading,
+#arena .poll > section .tweet {
+	padding: 10px;
+}
+
+
+#arena .poll {
+	border:1px solid #ccc;
+	border-radius:5px;
+}
+
+#arena .poll > header {
+	border-bottom: 1px solid #ddd;
+}
+
+#arena .poll > header  .title {
+	font-size:22px;
+	line-height: 22px;
+}
+
+#arena .poll > header  .title .username {
+	font-size:12px;
+	display: block;
+}
+
+
+#arena .poll > header .badge {
+	float: right;
+	position: relative;
+	bottom: 40px;
+}
+
+#arena .poll .loading {
+	background: #eee;
+	padding: 20px 10px;
+}
+#arena .poll .progress {
+	margin: 0;
+}
+
+#arena .poll section .tweet {
+	background: #eee;
+	border-top:#ddd 1px solid;
+	border-bottom:#fff 1px solid;
 	-webkit-animation: fadeOut 2s;
 	-moz-animation: fadeOut 2s;
 	-ms-animation: fadeOut 2s;
@@ -23,15 +70,23 @@
 	color: #08C;
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
 @keyframes "fadeOut" {
- 0% {
-    background: #f;
- }
+
  50% {
     background: #bff6fb;
- }
- 100% {
-    background: #FFF;
  }
 
 }
@@ -50,40 +105,9 @@
 }
 
 @-webkit-keyframes "fadeOut" {
- 0% {
-   background: #f;
- }
  50% {
-   background: #bff6fb;
- }
- 100% {
-   background: #FFF;
+    background: #bff6fb;
  }
 
-}
-
-@-ms-keyframes "fadeOut" {
- 0% {
-   background: #f;
- }
- 50% {
-   background: #bff6fb;
- }
- 100% {
-   background: #FFF;
- }
-
-}
-
-@-o-keyframes "fadeOut" {
- 0% {
-   background: #f;
- }
- 50% {
-   background: #bff6fb;
- }
- 100% {
-   background: #FFF;
- }
 
 }
