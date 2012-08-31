@@ -60,12 +60,12 @@ $(function(){
 	//////////////////////////////////////////////////////////////////////////////
 	
 	// Ron Paul
-	var search = '%23voteronpaul';
+	var search = '%23ronpaul';
 	var limit = 100;
 	getTweets(search, limit, ronpaul);
 	
 	// Vs. Mitt Romney
-	var search = '%23votemittromney';
+	var search = '%23mittromney';
 	var limit = 100;
 	getTweets(search, limit, mittromney);
 
