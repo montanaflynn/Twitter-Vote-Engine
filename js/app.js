@@ -12,18 +12,23 @@ $(function(){
 	//////////////////////////////////////////////////////////////////////////////
 
 	// Using persistant json storage Firebase
-	var db   = new Firebase('http://gamma.firebase.com/twitter-vote-engine/');
-	var ronpaul  = db.child('ronpaul');
-	var mittromney = db.child('mittromney');
+	var db   	 	= new Firebase('http://gamma.firebase.com/twitter-vote-engine/');
+	var db_scope    = db.limit(100);
+	
+	var ronpaul   	= db.child('ronpaul');
+	var mittromney  = db.child('mittromney');	
 	
 	// Set the feed up forever with a callback
 	var feed;
-	db.on('value', function(result) {
+	
+	// Add Vote Count Badge (Because it's ugly)
+	$('.poll header button').append('&nbsp;<span class="badge badge-inverse"></span>');
+	
+	db_scope.on('value', function(result) {
+		$('.loading').hide();
 		feed = result.val();
-		$('.init-loading').hide();
-		
 		_.each(feed, function(value, key){ 
-			$('#'+key+' .title .badge').html(_.size(value));
+			$('#'+key+' header .badge').html(_.size(value));
 		});
 		
 	});
@@ -47,7 +52,7 @@ $(function(){
 		    	}, 
 				complete: getTweets(search, limit, db)
 			});
-		}, 10000);
+		}, 30000);
 	}
 	
 	//////////////////////////////////////////////////////////////////////////////
@@ -55,12 +60,12 @@ $(function(){
 	//////////////////////////////////////////////////////////////////////////////
 	
 	// Ron Paul
-	var search = '%23ronpaul';
+	var search = '%23voteronpaul';
 	var limit = 100;
 	getTweets(search, limit, ronpaul);
 	
 	// Vs. Mitt Romney
-	var search = '%23mittromney';
+	var search = '%23votemittromney';
 	var limit = 100;
 	getTweets(search, limit, mittromney);
 
