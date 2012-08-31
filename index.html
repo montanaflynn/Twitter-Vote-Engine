@@ -3,37 +3,9 @@
 <html lang="en">
 	<head>
 		<title>Twitter Vote Engine</title>
+		<link href="css/style.css" rel="stylesheet">
 		<link href="css/bootstrap.css" rel="stylesheet">
 		<link href="css/bootstrap-responsive.css" rel="stylesheet">
-		<style>
-			#arena .tweets .tweet {
-				padding: 6px 0;
-				margin: 4px 0;
-				animation: fadeOut 2s;
-				-webkit-animation: fadeOut 2s; /* Safari and Chrome */
-			}
-			#arena .tweets .tweet a {
-				color:#000;
-				-webkit-transition: color .2s ease-in;
-				-moz-transition: color .2s ease-in;
-				transition: color .2s ease-in;
-			}
-			#arena .tweets .tweet:hover a {
-				color:#08C;
-			}
-			
-			@keyframes fadeOut {
-				0% {background: #f;}
-				50% {background: #bff6fb;}
-				100% {background: #FFF;}
-			}
-
-			@-webkit-keyframes fadeOut {
-				0% {background: #FFF;}
-				50% {background: #bff6fb;}
-				100% {background: #FFF;}
-			}
-		</style>
 	</head>
 	<body>
 	<a href="https://github.com/montanaflynn/Twitter-Vote-Engine"><img src="http://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" style="position: fixed; right: 0; top: 0;"></a>
@@ -64,6 +36,7 @@
 	</div>
 	
 	<script src='js/jquery.min.js'></script>
+	<script src='js/underscore.min.js'></script>
 	<script src='js/twitter-text.js'></script>
 	<script src='js/app.js'></script>
 	<script src="http://static.firebase.com/v0/firebase.js"></script>

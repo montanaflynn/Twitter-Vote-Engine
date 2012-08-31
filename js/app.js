@@ -21,6 +21,11 @@ $(function(){
 	db.on('value', function(result) {
 		feed = result.val();
 		$('.init-loading').hide();
+		
+		_.each(feed, function(value, key){ 
+			$('#'+key+' .title .badge').html(_.size(value));
+		});
+		
 	});
 	
 	// Update data every 30 seconds
@@ -51,12 +56,12 @@ $(function(){
 	
 	// Ron Paul
 	var search = '%23ronpaul';
-	var limit = 25;
+	var limit = 100;
 	getTweets(search, limit, ronpaul);
 	
 	// Vs. Mitt Romney
 	var search = '%23mittromney';
-	var limit = 25;
+	var limit = 100;
 	getTweets(search, limit, mittromney);
 
 		
