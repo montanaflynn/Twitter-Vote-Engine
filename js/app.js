@@ -2,9 +2,16 @@
  * Twitter Vote Engine 
  * By Montana Flynn
  * http://montanaflynn.me
+ *
+ * License & Warranty: https://twitter.com/montanaflynn/status/237424754640949249
+ *
  */
 
+
+//////////////////////////////////////////////////////////////////////////////
 // Fasten seatbelts and prepare for liftoff, engines are running           
+//////////////////////////////////////////////////////////////////////////////
+
 $(function(){
 
 	//////////////////////////////////////////////////////////////////////////////
@@ -22,13 +29,13 @@ $(function(){
 	var feed;
 	
 	// Add Vote Count Badge (Because it's ugly)
-	$('.poll header .btn').append('&nbsp;<span class="badge badge-inverse"></span>');
+	$('.poll header .btn').append('&nbsp;<span class="badge badge-inverse hide"></span>');
 	
 	db_scope.on('value', function(result) {
 		$('.loading').hide();
 		feed = result.val();
 		_.each(feed, function(value, key){ 
-			$('#'+key+' header .badge').html(_.size(value));
+			$('#'+key+' header .badge').html(_.size(value)).show();
 		});
 		
 	});
