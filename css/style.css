@@ -20,6 +20,13 @@
 	border-bottom: 1px solid #ddd;
 }
 
+
+#arena .poll > header img {
+	float: left;
+	margin-right:10px;
+	border-radius:5px;
+}
+
 #arena .poll > header  .title {
 	font-size:22px;
 	line-height: 22px;

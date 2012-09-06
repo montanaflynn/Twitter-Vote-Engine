@@ -13,11 +13,18 @@
 		
 		<header>
 			<h1>Twitter Vote Engine</h1>
+			<select class="hide">
+				<option>Choose Match:</option>
+				<option>Ron Paul vs Mitt Romney</option>
+				<option>AT&amp;T vs Verizon</option>
+				<option>Make your own</option>
+			</select>
 		</header>
 		
 		<div class="row-fluid" id="arena">
 			<div id="ronpaul" class="poll span6">
 				<header>
+					<img src="http://api.twitter.com/1/users/profile_image?screen_name=repronpaul&size=bigger" height="64" width="64"/>
 					<h3 class="title">Ron Paul <span class="username">@RepRonPaul</span></h3>
 					<a class="btn btn-primary" href="https://twitter.com/intent/tweet?text=Voted+%23RonPaul+on+the+%23CS+political+experiment+by+%40montanaflynn%3A+http%3A%2F%2Fmontanaflynn.github.com%2FTwitter-Vote-Engine+%23vote+%23politics+%23code&source=TwitterVotes">Vote #RonPaul</a>
 				</header>
@@ -31,6 +38,7 @@
 			</div>
 			<div id="mittromney" class="poll span6">
 				<header>
+					<img src="http://api.twitter.com/1/users/profile_image?screen_name=mittromney&size=bigger" height="64" width="64"/>
 					<h3 class="title">Mitt Romney <span class="username">@MittRomney</span></h3>
 					<a class="btn btn-primary" href="https://twitter.com/intent/tweet?text=Voted+%23MittRomney+on+the+%23CS+political+experiment+by+%40montanaflynn%3A+http%3A%2F%2Fmontanaflynn.github.com%2FTwitter-Vote-Engine+%23vote+%23politics+%23code&source=TwitterVotes">Vote #MittRomney</a>
 				</header>
