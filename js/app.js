@@ -30,10 +30,9 @@ $(function(){
 		$('.loading').hide();
 		feed = result.val();
 		
-		_.each(feed, function(value, key){ 
-			$('#'+key+' header .badge').html(_.size(value)).show();
+		Object.keys(feed, function(key, value) {
+			$('#'+key+' header .badge').html(Object.size(value)).show();
 		});
-		
 	});
 	
 	// Update data every 30 seconds
