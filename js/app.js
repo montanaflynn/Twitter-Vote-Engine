@@ -7,11 +7,6 @@
  *
  */
 
-
-//////////////////////////////////////////////////////////////////////////////
-// Fasten seatbelts and prepare for liftoff, engines are running           
-//////////////////////////////////////////////////////////////////////////////
-
 $(function(){
 
 	//////////////////////////////////////////////////////////////////////////////
@@ -28,12 +23,13 @@ $(function(){
 	// Set the feed up forever with a callback
 	var feed;
 	
-	// Add Vote Count Badge (Because it's ugly)
-	$('.poll header .btn').append('&nbsp;<span class="badge badge-inverse hide"></span>');
-	
+	// Add Vote Count Badge
+	$('.poll header .btn').append('<span class="badge badge-inverse hide"></span>');
+
 	db_scope.on('value', function(result) {
 		$('.loading').hide();
 		feed = result.val();
+		
 		_.each(feed, function(value, key){ 
 			$('#'+key+' header .badge').html(_.size(value)).show();
 		});
@@ -78,28 +74,39 @@ $(function(){
 
 		
 	//////////////////////////////////////////////////////////////////////////////
-	// Callbacks keep the GUI fresh                                              
+	// Update the GUI and keep it fresh with callbacks                                       
 	//////////////////////////////////////////////////////////////////////////////
+	
+	function buildTweet(vote) {
+		// Build the tweet DOM element
+		var tweet;
+		var date = Date.create(vote.created_at);
+		tweet = '<h4>'+ vote.from_user_name;
+		tweet += '<span class="username"> @' + vote.from_user + '</span> ';
+		tweet += '<span class="time-ago">' + date.relative() + '</span> ';
+		tweet += '</h4>';
+		tweet += '<p>' + vote.text + '</p>';		
+		tweet = twttr.txt.autoLink(tweet, {urlEntities: vote.entities.urls });
+		return tweet;
+	}
 		
 	ronpaul.on('child_added', function(result) {
 	 	var vote = result.val();
 		var element = $('#'+ronpaul.name());
-		var tweet = vote.text + ' tweeted @' + vote.from_user  + ' on ' + vote.created_at;		
-		tweet = twttr.txt.autoLink(tweet, {urlEntities: vote.entities.urls })
+		var tweet = buildTweet(vote);
 		
 		element.find('.tweets').prepend(
-			'<p class="tweet">'+ tweet +'</p>'
+			'<div class="tweet">'+ tweet +'</div>'
 		);
 	});
 	
 	mittromney.on('child_added', function(result) {
 	 	var vote = result.val();
 		var element = $('#'+mittromney.name());
-		var tweet = vote.text + ' tweeted @' + vote.from_user  + ' on ' + vote.created_at;
-		tweet = twttr.txt.autoLink(tweet, {urlEntities: vote.entities.urls })
+		var tweet = buildTweet(vote);
 		
 		element.find('.tweets').prepend(
-			'<p class="tweet">'+ tweet +'</p>'
+			'<div class="tweet">'+ tweet +'</div>'
 		);
 	});
 

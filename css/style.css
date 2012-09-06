@@ -1,6 +1,15 @@
+/*
+
+ Project: Twitter Vote Engine
+ Author: Montana Flynn
+ URL: http://montanaflynn.me
+
+*/
+
 .container > header {
 	margin: 40px 0;
 }
+
 #arena {
 }
 
@@ -10,21 +19,37 @@
 	padding: 10px;
 }
 
-
 #arena .poll {
-	border:1px solid #ccc;
+	border:1px solid rgba(0,0,0,.3);
 	border-radius:5px;
+	-webkit-border-bottom-right-radius: 5px;
+	-webkit-border-bottom-left-radius: 5px;
+	-moz-border-radius-bottomright: 5px;
+	-moz-border-radius-bottomleft: 5px;
+	border-bottom-right-radius: 5px;
+	border-bottom-left-radius: 5px;
 }
 
 #arena .poll > header {
+	background: #fff;
 	border-bottom: 1px solid #ddd;
+	-webkit-background-clip: padding-box;
+	-moz-background-clip: padding-box;
+	background-clip: padding-box;
+	-webkit-border-top-right-radius: 5px;
+	-webkit-border-top-left-radius: 5px;
+	-moz-border-radius-topright: 5px;
+	-moz-border-radius-topleft: 5px;
+	border-top-right-radius: 5px;
+	border-top-left-radius: 5px;
 }
-
 
 #arena .poll > header img {
 	float: left;
 	margin-right:10px;
 	border-radius:5px;
+	height:64px;
+	width:64px;
 }
 
 #arena .poll > header  .title {
@@ -37,24 +62,37 @@
 	display: block;
 }
 
-
 #arena .poll > header .btn {
 	float: right;
 	position: relative;
 	bottom: 50px;
 }
 
+#arena .poll > header .btn .badge {
+	margin-left: 5px;
+}
+
 #arena .poll .loading {
-	background: #eee;
 	padding: 20px 10px;
+	background: #eee;
+	-webkit-border-bottom-right-radius: 5px;
+	-webkit-border-bottom-left-radius: 5px;
+	-moz-border-radius-bottomright: 5px;
+	-moz-border-radius-bottomleft: 5px;
+	border-bottom-right-radius: 5px;
+	border-bottom-left-radius: 5px;
 }
 #arena .poll .progress {
 	margin: 0;
 }
 
+#arena .poll section .tweet:first-child {
+	border-top:0;
+}
+
 #arena .poll section .tweet {
 	margin:0;
-	background: #eee;
+	background:#eee;
 	border-top:#ddd 1px solid;
 	border-bottom:#fff 1px solid;
 	-webkit-animation: fadeOut 2s;
@@ -62,6 +100,22 @@
 	-ms-animation: fadeOut 2s;
 	-o-animation: fadeOut 2s;
 	animation: fadeOut 2s;
+}
+
+#arena .poll section .tweet h4 {
+	margin:0;
+	clear:both;
+}
+
+#arena .poll section .tweet h4 .username {
+	color: #777;
+	font-size:12px;
+}
+
+#arena .poll section .tweet .time-ago {
+	color: #777;
+	font-size:12px;
+	float:right;
 }
 
 #arena .tweets .tweet a {
@@ -77,19 +131,6 @@
 #arena .tweets .tweet:hover a {
 	color: #08C;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 @keyframes "fadeOut" {
 
